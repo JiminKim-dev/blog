@@ -5,10 +5,10 @@ const PostsPage = async () => {
   const posts = await getNotionPosts();
 
   return (
-    <div>
-      <h1 className="text-5xl">Posts</h1>
+    <div className="w-full">
+      <h1 className="mt-8 text-5xl font-extrabold text-stone-800">Posts</h1>
       <p className="py-6">개발하면서 정리한 기록을 올립니다.</p>
-      <section>
+      <section className="flex gap-4">
         <PostContainer posts={posts} />
       </section>
     </div>
