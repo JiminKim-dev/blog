@@ -22,3 +22,20 @@ export const getNotionPosts = async (): Promise<PostType[]> => {
 
   return posts;
 };
+
+export const getFilterdPosts = async (params: string): Promise<PostType[]> => {
+  const database = await notion.databases.query({
+    database_id: `${process.env.NEXT_PUBLIC_DATABASE_ID}`,
+    filter: {
+      property: 'tags',
+      multi_select: {
+        contains: params,
+      },
+    },
+    sorts: [{ timestamp: 'created_time', direction: 'descending' }],
+  });
+
+  const posts: PostType[] = extractDatabaseItems(database);
+
+  return posts;
+};
