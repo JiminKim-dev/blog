@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PostType } from '@/types/database';
+import Tag from './Tag';
 
 const PostCard = ({ post }: { post: PostType }) => {
   const { title, slug, createTime, tags, description } = post;
@@ -12,11 +13,16 @@ const PostCard = ({ post }: { post: PostType }) => {
         <p className="my-1 text-lg">{description}</p>
       </Link>
       <div className="flex gap-2">
-        {tags.map(tag => (
-          <span className="text-blue-500" key={tag?.id}>
-            #{tag?.name}
-          </span>
-        ))}
+        {tags.map(
+          tag =>
+            tag && (
+              <Tag key={tag.name} name={tag.name}>
+                <p className="text-blue-500 hover:text-blue-800" key={tag.id}>
+                  #{tag.name}
+                </p>
+              </Tag>
+            ),
+        )}
       </div>
     </article>
   );
