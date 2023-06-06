@@ -1,4 +1,5 @@
 import PostContainer from '@/components/Posts/PostContainer';
+import PostTags from '@/components/Posts/PostTags';
 import { getNotionPosts } from '@/lib/notion';
 
 const PostsPage = async () => {
@@ -8,7 +9,8 @@ const PostsPage = async () => {
     <div className="w-full">
       <h1 className="mt-8 text-5xl font-extrabold text-stone-800">Posts</h1>
       <p className="py-6">개발하면서 정리한 기록을 올립니다.</p>
-      <section className="flex gap-4">
+      <section className="flex flex-col gap-6">
+        <PostTags posts={posts} />
         <PostContainer posts={posts} />
       </section>
     </div>
