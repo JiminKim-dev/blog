@@ -8,12 +8,6 @@ const Header = () => {
           Dobby's Blog
         </Link>
         <nav className="flex gap-4 text-white">
-          <Link href="/" className="hover:text-stone-800">
-            Home
-          </Link>
-          <Link href="/about" className="hover:text-stone-800">
-            About
-          </Link>
           <Link href="/posts" className="hover:text-stone-800">
             Posts
           </Link>
