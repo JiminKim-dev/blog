@@ -13,10 +13,10 @@ const getDatabaseProperties = (database: QueryDatabaseResponse) => {
   return dataBaseItems;
 };
 
-export const extractDatabaseItems = (database: QueryDatabaseResponse) => {
+export const extractPostItems = (database: QueryDatabaseResponse) => {
   const dataBaseItems = getDatabaseProperties(database);
 
-  const posts = dataBaseItems.map(post => {
+  const extractedItems = dataBaseItems.map(post => {
     return {
       id: post.id,
       title: post.title.title[0]?.plain_text || '제목을 입력해주세요',
@@ -28,5 +28,5 @@ export const extractDatabaseItems = (database: QueryDatabaseResponse) => {
     };
   });
 
-  return posts;
+  return extractedItems;
 };

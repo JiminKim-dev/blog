@@ -1,6 +1,6 @@
 import { PostType } from '@/types/database';
 import { Client } from '@notionhq/client';
-import { extractDatabaseItems } from './util';
+import { extractPostItems } from './util';
 
 const notion = new Client({
   auth: process.env.NEXT_PUBLIC_API_KEY,
@@ -18,7 +18,7 @@ export const getNotionPosts = async (): Promise<PostType[]> => {
     sorts: [{ timestamp: 'created_time', direction: 'descending' }],
   });
 
-  const posts: PostType[] = extractDatabaseItems(database);
+  const posts: PostType[] = extractPostItems(database);
 
   return posts;
 };
@@ -35,7 +35,7 @@ export const getFilterdPosts = async (params: string): Promise<PostType[]> => {
     sorts: [{ timestamp: 'created_time', direction: 'descending' }],
   });
 
-  const posts: PostType[] = extractDatabaseItems(database);
+  const posts: PostType[] = extractPostItems(database);
 
   return posts;
 };
