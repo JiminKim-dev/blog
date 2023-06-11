@@ -18,7 +18,7 @@ export const getNotionPosts = async (): Promise<PostType[]> => {
     sorts: [{ timestamp: 'created_time', direction: 'descending' }],
   });
 
-  const posts: PostType[] = extractPostItems(database);
+  const posts = extractPostItems(database);
 
   return posts;
 };
@@ -35,7 +35,7 @@ export const getFilterdPosts = async (params: string): Promise<PostType[]> => {
     sorts: [{ timestamp: 'created_time', direction: 'descending' }],
   });
 
-  const posts: PostType[] = extractPostItems(database);
+  const posts = extractPostItems(database);
 
   return posts;
 };
