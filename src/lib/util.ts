@@ -1,7 +1,7 @@
 import { DataBaseItemType } from '@/types/database';
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 
-export const extractDatabaseItems = (database: QueryDatabaseResponse) => {
+const getDatabaseProperties = (database: QueryDatabaseResponse) => {
   const dataBaseItems: DataBaseItemType[] = [];
   database.results.forEach(post => {
     return (
@@ -9,6 +9,12 @@ export const extractDatabaseItems = (database: QueryDatabaseResponse) => {
       dataBaseItems.push({ ...post.properties, id: post.id } as DataBaseItemType)
     );
   });
+
+  return dataBaseItems;
+};
+
+export const extractDatabaseItems = (database: QueryDatabaseResponse) => {
+  const dataBaseItems = getDatabaseProperties(database);
 
   const posts = dataBaseItems.map(post => {
     return {
