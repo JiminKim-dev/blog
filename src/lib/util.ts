@@ -13,20 +13,19 @@ const getDatabaseProperties = (database: QueryDatabaseResponse) => {
   return dataBaseItems;
 };
 
+export const extractPostItem = (post: DataBaseItemType) => {
+  return {
+    id: post.id,
+    title: post.title.title[0]?.plain_text || '제목을 입력해주세요',
+    slug: post.slug.rich_text[0]?.plain_text || '경로를 입력해주세요',
+    tags: post.tags.multi_select,
+    createTime: post.created_time.created_time,
+    description: post.description.rich_text[0]?.plain_text || '',
+    thumbnail: post.thumbnail.files[0],
+  };
+};
+
 export const extractPostItems = (database: QueryDatabaseResponse): PostType[] => {
   const dataBaseItems = getDatabaseProperties(database);
-
-  const extractedItems = dataBaseItems.map(post => {
-    return {
-      id: post.id,
-      title: post.title.title[0]?.plain_text || '제목을 입력해주세요',
-      slug: post.slug.rich_text[0]?.plain_text || '경로를 입력해주세요',
-      tags: post.tags.multi_select,
-      createTime: post.created_time.created_time,
-      description: post.description.rich_text[0]?.plain_text || '',
-      thumbnail: post.thumbnail.files[0],
-    };
-  });
-
-  return extractedItems;
+  return dataBaseItems.map(post => extractPostItem(post));
 };
