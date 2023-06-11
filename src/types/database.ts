@@ -33,3 +33,8 @@ export interface PostType {
   description: string;
   thumbnail: any;
 }
+
+export interface PageDataType {
+  pageInfo: PostType;
+  mainText: string;
+}
