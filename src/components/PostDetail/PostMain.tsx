@@ -1,10 +1,8 @@
-'use client';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import remarkGfm from 'remark-gfm';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { materialOceanic } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import rehypeRaw from 'rehype-raw';
 import Image from 'next/image';
+import Code from './Code';
 
 type PostMainProps = {
   mainText: string;
@@ -32,22 +30,7 @@ const PostMain = ({ mainText }: PostMainProps) => {
             ></blockquote>
           );
         },
-        code: ({ inline, className, children, node, ...props }) => {
-          const match = /language-(\w+)/.exec(className || '');
-          return !inline && match ? (
-            <SyntaxHighlighter
-              {...props}
-              children={String(children).replace(/\n$/, '')}
-              style={materialOceanic}
-              language={match[1]}
-              PreTag="div"
-            />
-          ) : (
-            <code {...props} className="px-1 py-px text-sm text-red-400 rounded-sm bg-stone-200">
-              {children}
-            </code>
-          );
-        },
+        code: props => <Code props={props} />,
         details: ({ node, ...props }) => <details {...props} />,
         img: ({ node, ...props }) => {
           return (
