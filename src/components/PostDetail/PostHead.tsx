@@ -7,7 +7,7 @@ type PostHeadProps = {
 };
 
 const PostHead = ({ info }: PostHeadProps) => {
-  const { title, createTime, tags } = info;
+  const { title, createTime, tags, thumbnail } = info;
 
   return (
     <div>
@@ -25,6 +25,17 @@ const PostHead = ({ info }: PostHeadProps) => {
             ),
         )}
       </div>
+      {thumbnail && (
+        <Image
+          alt={thumbnail.name}
+          src={thumbnail.file.url}
+          width={1024}
+          height={720}
+          sizes="100vw"
+          priority
+          className="w-full h-auto mb-4 rounded-xl"
+        />
+      )}
     </div>
   );
 };
