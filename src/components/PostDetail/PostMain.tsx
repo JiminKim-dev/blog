@@ -11,7 +11,7 @@ type PostMainProps = {
 const PostMain = ({ mainText }: PostMainProps) => {
   return (
     <ReactMarkdown
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 py-14"
       children={mainText}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}

@@ -14,6 +14,7 @@ const Code = ({ props }: { props: CodeProps }) => {
       style={tomorrow}
       language={match[1]}
       PreTag="div"
+      className="rounded-xl"
     />
   ) : (
     <code {...anyProps} className="px-1 py-px text-sm text-red-400 rounded-sm bg-stone-200">

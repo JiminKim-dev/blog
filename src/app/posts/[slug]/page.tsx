@@ -11,9 +11,8 @@ type Props = {
 const PostDetailPage = async ({ params: { slug } }: Props) => {
   const { pageInfo, mainText } = await getPost(slug);
   return (
-    <div className="w-full p-10 mt-10 bg-white border-2 rounded-3xl border-stone-200">
+    <div className="flex flex-col w-full my-20 divide-y-2 gap-14 divide-stone-400">
       <PostHead info={pageInfo} />
-      <hr className="my-10 bg-stone-600" />
       <PostMain mainText={mainText} />
     </div>
   );
