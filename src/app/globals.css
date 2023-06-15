@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  ul,
+  ol {
+    @apply pl-8;
+  }
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  table {
+    @apply table-fixed w-full border-collapse border border-stone-300 rounded-lg;
+  }
+
+  th,
+  td {
+    @apply border border-stone-300 p-2;
+  }
+
+  th {
+    @apply bg-stone-200;
+  }
+}
