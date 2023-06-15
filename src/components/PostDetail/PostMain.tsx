@@ -34,7 +34,13 @@ const PostMain = ({ mainText }: PostMainProps) => {
         details: ({ node, ...props }) => <details {...props} />,
         img: ({ node, ...props }) => {
           return (
-            <Image src={props.src!} alt={props.alt!} width={720} height={480} className="m-auto" />
+            <Image
+              src={props.src!}
+              alt={props.alt!}
+              width={1024}
+              height={720}
+              className="w-full h-auto"
+            />
           );
         },
       }}
