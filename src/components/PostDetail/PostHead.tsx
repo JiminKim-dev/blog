@@ -10,21 +10,21 @@ const PostHead = ({ info }: PostHeadProps) => {
   const { title, createTime, tags, thumbnail } = info;
 
   return (
-    <div>
-      <h1 className="mb-6 text-4xl font-bold">{title}</h1>
-      <p className="mb-4">{createTime.substring(0, 10)}</p>
+    <div className="flex flex-col gap-2 lg:gap-4">
       <div className="flex gap-2">
         {tags.map(
           tag =>
             tag && (
               <Tag key={tag.id} name={tag.name}>
-                <p className="text-blue-500 hover:text-blue-800" key={tag.id}>
+                <p className="text-lg text-blue-500 lg:text-xl hover:text-blue-800" key={tag.id}>
                   #{tag.name}
                 </p>
               </Tag>
             ),
         )}
       </div>
+      <h1 className="mb-px text-3xl font-bold lg:mb-2 lg:text-5xl">{title}</h1>
+      <p className="mb-4 lg:text-lg">{createTime.substring(0, 10)}</p>
       {thumbnail && (
         <Image
           alt={thumbnail.name}
